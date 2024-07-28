@@ -2,13 +2,21 @@
   "name": "figma2html",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "dist/index.js",
+  "type": "module",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "npx tsc",
+    "test": "npm run build && node --env-file=.env dist/index.js ./test_data/landing-page.svg"
   },
   "author": "",
   "license": "ISC",
+  "engines": {
+    "node": ">=20.x"
+  },
   "dependencies": {
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0"
   }
 }
