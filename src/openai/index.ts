@@ -1,7 +1,7 @@
 const OPENAI_URL = 'https://api.openai.com/v1/chat/completions';
 
 
-export const generateHTML = async (svgContent: string): Promise<string> => {
+export const generateHTML = async (image_url: string): Promise<string> => {
     const SYSTEM_PROMPT = `
     You are an expert Tailwind developer
     You take screenshots of a reference web page from the user, and then build single page apps 
@@ -27,10 +27,9 @@ export const generateHTML = async (svgContent: string): Promise<string> => {
     Do not include markdown "\`\`\`" or "\`\`\`html" at the start or end.
     `;
     const USER_CONTENT = `
-    Here is the code of the SVG URL: ${svgContent}
+    Generate code for a web page that looks exactly like this.
     `;
 
-    console.log(`getScheduleDetailFromMessage: ${USER_CONTENT}`);
     const response = await fetch(OPENAI_URL, {
         method: 'POST',
         headers: {
@@ -38,7 +37,7 @@ export const generateHTML = async (svgContent: string): Promise<string> => {
             'Authorization': `Bearer ${process.env.OPEN_AI_API_KEY}`
         },
         body: JSON.stringify({
-            model: 'gpt-4o',
+            model: 'gpt-4o-mini',
             messages: [
                 {
                     role: 'system',
@@ -46,8 +45,19 @@ export const generateHTML = async (svgContent: string): Promise<string> => {
                 },
                 {
                     role: 'user',
-                    content: USER_CONTENT
-                }
+                    content: [
+                        {
+                            "type": "text",
+                            "text": USER_CONTENT
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": image_url
+                            }
+                        }
+                    ]
+                },
             ]
         })
     });
@@ -59,5 +69,80 @@ export const generateHTML = async (svgContent: string): Promise<string> => {
     const choice = choices[0];
     const responseMessage = choice.message.content;
     return responseMessage;
+}
+
+export const detectCmsArea = async (image_url: string): Promise<string> => {
+    const SYSTEM_PROMPT = `
+    You are an expert in CMS. The provided image includes a web design concept that contains a lot of CMS content. From this, you will identify the content types that should be managed as articles in the CMS and extract that content as a JSON Object.
+    In general, a CMS has the concept of "content types," and each "content type" has "fields" that are managed according to their type. The types of "fields" include single-line text (text), rich text (rich_text), images (image), and dates (calendar).
+    For example, if a CMS content type includes "Body," "Title," and "Thumbnail," then "Body" would be "rich_text," "Title" would be "single-line text," and "Thumbnail" would be "image."
+    To avoid duplication, you should consolidate content types that have the same fields into a single content type as much as possible.
+    Please return the cropping parameters for the image field as numerical values in the format: x: <starting X>, y: <starting Y>, width: <width>, height: <height>.
+    Please assign an appropriate alias to each piece of content. The alias should be a unique identifier for the content and should be a string.
     
+    Please ensure that the output is in JSON format according to the "Output Format" specified below. This JSON output should not contain any unnecessary characters other than JSON.
+
+    ### Output Format
+    {
+        "content_type": [
+          {
+            "field_name": <field_name>,
+            "field_type": <text / rich_text / image / calendar>
+          }
+        ],
+        "contents": [
+            {
+                "content_title": <content_title>,
+                "content_alias": <content_alias>,
+                "fields: [
+                    {
+                        "field_name": <field_name>,
+                        "field_type": <text / rich_text / image / calendar>
+                        "field_value": <field_value>
+                    }
+                ]
+            }
+        ]
+      }
+    `;
+    const USER_CONTENT = `This is the image that contains the CMS area. Please identify the content types that should be managed as articles in the CMS and extract that content as a JSON Object.`;
+    const response = await fetch(OPENAI_URL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${process.env.OPEN_AI_API_KEY}`
+        },
+        body: JSON.stringify({
+            model: 'gpt-4o-mini',
+            response_format: { "type": "json_object" },
+            messages: [
+                {
+                    role: 'system',
+                    content: SYSTEM_PROMPT
+                },
+                {
+                    role: 'user',
+                    content: [
+                        {
+                            "type": "text",
+                            "text": USER_CONTENT
+                        },
+                        {
+                            "type": "image_url",
+                            "image_url": {
+                                "url": image_url
+                            }
+                        }
+                    ]
+                },
+            ]
+        })
+    });
+
+    console.log(`getScheduleDetailFromMessage response: ${response}`);
+    const responseJson = (await response.json()) as { choices: { message: { content: string } }[] };
+    const choices = responseJson.choices;
+    const choice = choices[0];
+    const responseMessage = choice.message.content;
+    return responseMessage;
 }

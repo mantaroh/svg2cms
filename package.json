@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "test": "npm run build && node --env-file=.env dist/index.js ./test_data/landing-page.svg"
+    "test": "npm run build && node --env-file=.env dist/index.js ./test_data/blog-desktop.svg",
+    "dev": "npx ts-node-dev src/index.ts"
   },
   "author": "",
   "license": "ISC",
@@ -14,9 +15,14 @@
     "node": ">=20.x"
   },
   "dependencies": {
+    "@aws-sdk/client-s3": "^3.623.0",
+    "@aws-sdk/s3-request-presigner": "^3.623.0",
+    "convert-svg-to-png": "^0.6.4",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "@types/node": "^22.0.0"
+    "@types/node": "^22.0.0",
+    "ts-node": "^10.9.2",
+    "ts-node-dev": "^2.0.0"
   }
 }
