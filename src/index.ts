@@ -1,6 +1,6 @@
 import path from "path";
 import fs from "fs";
-import { detectCmsArea, generateHTML } from "./openai/index.js";
+import { detectCmsArea, generateHTML, replaceEmbedSyntax } from "./openai/index.js";
 import { convertSVGToPNG } from "./utils/svg2png.js";
 import { exit } from "process";
 import { getSignedUrlForUpload, removeFile, uploadFile } from "./cloudflare/r2.js";
@@ -27,12 +27,20 @@ try {
     console.log(url);
 
     console.log("Generating HTML🚀🚀");
-    //const html = await generateHTML(url);
-    //console.log(html);
+    const html = await generateHTML(url);
+    console.log(html);
 
     console.log("Detecting CMS Area🚀🚀🚀");
-    const cmsInfo = await detectCmsArea(url);
-    console.log(cmsInfo);
+    const cmsInfo = JSON.parse(await detectCmsArea(url));
+    console.log(JSON.stringify(cmsInfo));
+
+    console.log("Replacing Embed Syntax🚀🚀🚀🚀");
+    const replacedHtml = await replaceEmbedSyntax(html, cmsInfo);
+    // console.log(replacedHtml);
+    // write replacedHtml to file
+    fs.writeFileSync("output.html", replacedHtml);
+
+    console.log("Success🎉🎉🎉🎉🎉");
 
     await removeFile(key);
 } catch(e) {
