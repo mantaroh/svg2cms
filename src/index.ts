@@ -4,17 +4,22 @@ import { detectCmsArea, generateHTML, replaceEmbedSyntax } from "./openai/index.
 import { convertSVGToPNG } from "./utils/svg2png.js";
 import { exit } from "process";
 import { getSignedUrlForUpload, removeFile, uploadFile } from "./cloudflare/r2.js";
+import { SpearlyAPIClient } from "./spearly/index.js";
 
 let pngPath = "";
 let r2Uploaded = false;
 
 try {
-    // SVG File path
     const argFile = process.argv[2];
-    const svgPath = path.resolve(argFile);
+    const filePath = path.resolve(argFile);
+    const extension = path.extname(filePath);
 
-    // read svg file and store it in svgContent as string
-    pngPath = await convertSVGToPNG(svgPath);
+    if (["png", "svg"].indexOf(extension) === -1 || !fs.existsSync(filePath)) {
+        console.error("Invalid file path or format. Please provide a valid png or svg file path.");
+        exit(1);
+    }
+
+    const pngPath = extension === "svg" ? await convertSVGToPNG(filePath) : filePath;
     const key = path.relative(process.cwd(), pngPath);
     console.log(pngPath);
     console.log(key);
@@ -28,19 +33,18 @@ try {
 
     console.log("Generating HTML🚀🚀");
     const html = await generateHTML(url);
-    console.log(html);
+    fs.writeFileSync("raw-html.html", html);
 
     console.log("Detecting CMS Area🚀🚀🚀");
     const cmsInfo = JSON.parse(await detectCmsArea(url));
     console.log(JSON.stringify(cmsInfo));
+    fs.writeFileSync("cms-info.json", JSON.stringify(cmsInfo));
 
     console.log("Replacing Embed Syntax🚀🚀🚀🚀");
     const replacedHtml = await replaceEmbedSyntax(html, cmsInfo);
-    // console.log(replacedHtml);
-    // write replacedHtml to file
     fs.writeFileSync("output.html", replacedHtml);
 
-    console.log("Success🎉🎉🎉🎉🎉");
+    console.log("🎉Success🎉");
 
     await removeFile(key);
 } catch(e) {

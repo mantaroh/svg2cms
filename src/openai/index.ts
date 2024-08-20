@@ -36,7 +36,7 @@ export const generateHTML = async (image_url: string): Promise<string> => {
       Authorization: `Bearer ${process.env.OPEN_AI_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",
@@ -164,6 +164,10 @@ export const replaceEmbedSyntax = async (
     \`\`\`<div cms-item cms-content-type="sample" cms-content="<content_alias>">\`\`\`
 
     The text to be replaced within the small element should be written as {%= sample_<field_name> %}, allowing the library to fetch data from the CMS and replace it.
+    Note that:
+     - The <field_name> should be the same as the "field_name" in the CMS content object JSON.
+     - This field_name is not contain the "content_alias".
+     - This field_name should be lowercase and separated by an underscore.
 
     For example, if <content_alias> is "test," and you want to replace the title stored in the CMS, you would do it like this:
     \`\`\`
