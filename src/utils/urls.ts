@@ -17,5 +17,11 @@ export const URLS = {
     },
     getToken: (nonce: string) => {
         return createAuthAPIUrl("oauth/token") + `?nonce=${nonce}`;
+    },
+    getALlTeams: () => {
+        return createCMSAPIUrl("teams");
+    },
+    createContentType: () => {
+        return createCMSAPIUrl("content_types");
     }
 }

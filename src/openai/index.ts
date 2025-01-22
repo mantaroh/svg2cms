@@ -75,8 +75,8 @@ export const generateHTML = async (image_url: string): Promise<string> => {
 export const detectCmsArea = async (image_url: string): Promise<string> => {
   const SYSTEM_PROMPT = `
     You are an expert in CMS. The provided image includes a web design concept that contains a lot of CMS content. From this, you will identify the content types that should be managed as articles in the CMS and extract that content as a JSON Object.
-    In general, a CMS has the concept of "content types," and each "content type" has "fields" that are managed according to their type. The types of "fields" include single-line text (text), rich text (rich_text), images (image), and dates (calendar).
-    For example, if a CMS content type includes "Body," "Title," and "Thumbnail," then "Body" would be "rich_text," "Title" would be "single-line text," and "Thumbnail" would be "image."
+    In general, a CMS has the concept of "content types," and each "content type" has "fields" that are managed according to their type. The types of "fields" include text, rich text (richText), images (image), and dates (calendar).
+    For example, if a CMS content type includes "Body," "Title," and "Thumbnail," then "Body" would be "richText," "Title" would be "single-line text," and "Thumbnail" would be "image."
     To avoid duplication, you should consolidate content types that have the same fields into a single content type as much as possible.
     Please return the cropping parameters for the image field as numerical values in the format: x: <starting X>, y: <starting Y>, width: <width>, height: <height>.
     Please assign an appropriate alias to each piece of content. The alias should be a unique identifier for the content and should be a string.
@@ -87,8 +87,8 @@ export const detectCmsArea = async (image_url: string): Promise<string> => {
     {
         "content_type": [
           {
-            "field_name": <field_name>,
-            "field_type": <text / rich_text / image / calendar>
+            "fieldName": <fieldName>,
+            "fieldType": <text / richText / image / calendar>
           }
         ],
         "contents": [
@@ -97,9 +97,9 @@ export const detectCmsArea = async (image_url: string): Promise<string> => {
                 "content_alias": <content_alias>,
                 "fields: [
                     {
-                        "field_name": <field_name>,
-                        "field_type": <text / rich_text / image / calendar>
-                        "field_value": <field_value>
+                        "fieldName": <fieldName>,
+                        "fieldType": <text / richText / image / calendar>
+                        "fieldValue": <fieldValue>
                     }
                 ]
             }
@@ -114,7 +114,7 @@ export const detectCmsArea = async (image_url: string): Promise<string> => {
       Authorization: `Bearer ${process.env.OPEN_AI_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       response_format: { type: "json_object" },
       messages: [
         {
@@ -156,25 +156,41 @@ export const replaceEmbedSyntax = async (
 ): Promise<string> => {
   const SYSTEM_PROMPT = `
     You are an expert in the embedded syntax of the Spearly CMS product. You will be given HTML and a CMS content object JSON as input, and your task is to rewrite the HTML according to the embedding syntax rules.
-    The CMS content object should follow the "CMS Content Object Format." You will replace the text in the HTML with the corresponding values from the "field_value" field according to the replacement syntax rules.
+    The CMS content object should follow the "CMS Content Object Format." You will replace the text in the HTML with the corresponding values from the "fieldValue" field according to the replacement syntax rules.
+    Note: Do not include any strings other than HTML code.
 
     ## Embedding Syntax Rules
     The embedding syntax is a JavaScript library that fetches data from the CMS and replaces it in the HTML.
-    To specify content, you add the following HTML attributes to the small element that contains the text to be replaced:
-    \`\`\`<div cms-item cms-content-type="sample" cms-content="<content_alias>">\`\`\`
+    The text to be replaced within the element should be written as {%= mantaroh_<fieldName> %}, allowing the library to fetch data from the CMS and replace it.
 
-    The text to be replaced within the small element should be written as {%= sample_<field_name> %}, allowing the library to fetch data from the CMS and replace it.
+    To specify content and content type, you should add the following HTML attributes to the embed element that contains the text to be replaced:
+    \`\`\`<div cms-item cms-content-type="mantaroh" cms-content="<content_alias>">\`\`\`
+
     Note that:
-     - The <field_name> should be the same as the "field_name" in the CMS content object JSON.
-     - This field_name is not contain the "content_alias".
-     - This field_name should be lowercase and separated by an underscore.
+     - The image src should be replaced to image field value.
+     - The <fieldName> should be the same as the "fieldName" in the CMS content object JSON.
+     - This fieldName is not contain the "content_alias".
+     - "This fieldName should be lowercase and separated by an underscore."
 
-    For example, if <content_alias> is "test," and you want to replace the title stored in the CMS, you would do it like this:
+    For example, if <content_alias> is "ux-review," and you want to replace the title stored in the CMS, you would do it like this:
     \`\`\`
-    <div cms-item cms-content-type="sample" cms-content="test">
-    <h1>{%= sample_test %}</h1>
+    <div>
+      <div cms-item cms-content-type="ux-review" cms-content="mantaroh">
+        <h1>{%= mantaroh_test %}</h1>
+      </div>
     </div>
     \`\`\`
+
+    Finally, You should add the following code into <head> tags.
+    \`\`\`
+    <script src="https://static.spearly.xyz/js/cms.js" defer></script>
+    <script>window.addEventListener('DOMContentLoaded',()=>{const t=document.querySelectorAll(':not(:defined)');for(const e of t) {e.style.visibility="hidden";}; window.spearly.config.AUTH_KEY="oiWuaA3OfMKiwiZaIwISAgdJV5q0sKb8d52qiQhn2Jk"},{once:true})</script>
+    \`\`\`
+  
+
+    Note that
+      - You should insert 'cms-item' and 'cms-content-type' and 'cms-content' attribute into a parent element that encloses the string to be replaced.
+      - You don't need to replace string around hero section.
 
     ## CMS Content Object Format
     \`\`\`
@@ -185,8 +201,9 @@ export const replaceEmbedSyntax = async (
         "content_alias": <content_alias>,
         "fields": [
             {
-            "field_name": <field_name>,
-            "field_value": <field_value>
+            "fieldName": <fieldName>,
+            "fieldType": <text / richText / image / calendar>,
+            "fieldValue": <field_value>
             }
         ]
         }
@@ -194,7 +211,7 @@ export const replaceEmbedSyntax = async (
     }
     \`\`\`
     `;
-  const USER_CONTENT = `Please provide the HTML string and the content JSON object string, and I'll assist you with rewriting the HTML according to the embedding syntax rules.`;
+  const USER_CONTENT = `Please provide the raw HTML string and the content JSON object string, and I'll assist you with rewriting the HTML according to the embedding syntax rules.`;
   const response = await fetch(OPENAI_URL, {
     method: "POST",
     headers: {
@@ -202,7 +219,7 @@ export const replaceEmbedSyntax = async (
       Authorization: `Bearer ${process.env.OPEN_AI_API_KEY}`,
     },
     body: JSON.stringify({
-      model: "gpt-4o-mini",
+      model: "gpt-4o",
       messages: [
         {
           role: "system",

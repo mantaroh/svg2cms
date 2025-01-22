@@ -1,0 +1,131 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nordic Rose</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+        }
+    </style>
+    <script src="https://static.spearly.xyz/js/cms.js" defer></script>
+    <script>window.addEventListener('DOMContentLoaded',()=>{const t=document.querySelectorAll(':not(:defined)');for(const e of t) {e.style.visibility="hidden";}; window.spearly.config.AUTH_KEY="oiWuaA3OfMKiwiZaIwISAgdJV5q0sKb8d52qiQhn2Jk"},{once:true})</script>
+</head>
+<body class="bg-white text-black">
+
+    <!-- Header -->
+    <header class="flex justify-between items-center px-10 py-5 border-b">
+        <h1 class="text-2xl font-bold">NORDIC ROSE</h1>
+        <nav>
+            <ul class="flex space-x-8 text-sm font-bold">
+                <li>BLOG</li>
+                <li>ABOUT</li>
+                <li>LINKS</li>
+                <li>PROJECTS</li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Featured Article -->
+    <section class="text-center my-20 px-10">
+        <img src="https://placehold.co/800x400/yellow/black?text=Large+Feature+Image" alt="Abstract geometric illustration with yellow and black shapes" class="mx-auto mb-10">
+        <h2 class="text-3xl font-bold mb-4">A few words about this blog platform, Ghost, and how this site was made</h2>
+        <p class="text-sm text-gray-600 mb-8">Why Ghost (& Figma) instead of Medium, WordPress or other options?</p>
+        <hr class="border-gray-300 max-w-md mx-auto">
+    </section>
+
+    <!-- Articles -->
+    <section class="px-10">
+        <h3 class="text-xl font-bold mb-8 text-center">All articles</h3>
+        <div class="grid md:grid-cols-2 gap-10">
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_1">
+                <img src="{%= mantaroh_image %}" alt="Creative abstract art with faces" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_2">
+                <img src="{%= mantaroh_image %}" alt="Creative abstract art with people in a room" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_3">
+                <img src="{%= mantaroh_image %}" alt="Sketch art of a face in orange" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_1">
+                <img src="{%= mantaroh_image %}" alt="Abstract art with dark tones and a helmet" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_4">
+                <img src="{%= mantaroh_image %}" alt="Colorful mural with faces and vibrant colors" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_5">
+                <img src="{%= mantaroh_image %}" alt="Black and white geometric pattern" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_6">
+                <img src="{%= mantaroh_image %}" alt="Geometric art with light blue triangles" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_7">
+                <img src="{%= mantaroh_image %}" alt="Abstract art with various colors and shapes" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_7">
+                <img src="{%= mantaroh_image %}" alt="Abstract art installation with blue hues" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_1">
+                <img src="{%= mantaroh_image %}" alt="Abstract photo collage in soft pink tones" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_4">
+                <img src="{%= mantaroh_image %}" alt="Night view of a city street with neon lights" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+            <div cms-item cms-content-type="mantaroh" cms-content="article_8">
+                <img src="{%= mantaroh_image %}" alt="Abstract art with bold pink and black shapes" class="w-full mb-4">
+                <p class="text-center">{%= mantaroh_title %}</p>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-white mt-20">
+        <div class="py-5 text-center border-b border-gray-600">
+            <span class="text-xs font-bold tracking-widest">
+                DIGITAL PRODUCT DESIGN REMOTE WORK UX DESIGN DISTRIBUTED TEAMS CREATIVITY STRATEGY SUSPENSE GROWTH
+            </span>
+        </div>
+        <div class="py-10 text-center">
+            <h4 class="text-lg font-bold mb-2">NORDIC ROSE</h4>
+            <p class="text-xs mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis eu velit tempus erat egestas efficitur. In hac habitasse platea dictumst. Fusce a nunc eget ligula suscipit finibus.</p>
+            <div class="flex justify-center space-x-6 text-sm mb-4">
+                <a href="#">Twitter</a>
+                <a href="#">LinkedIn</a>
+                <a href="#">RSS</a>
+            </div>
+            <p class="text-xs">&copy; 2019-2020 Nordic Rose Co. <br> All rights reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
+```

@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "build": "npx tsc",
-    "test": "npm run build && node --env-file=.env dist/index.js ./test_data/blog-desktop.svg",
+    "test": "npm run build && node --env-file=.env dist/index.js ./test_data/blog5.png",
     "dev": "npx ts-node-dev src/index.ts"
   },
   "author": "",

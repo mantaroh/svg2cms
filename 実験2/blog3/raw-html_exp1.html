@@ -1,0 +1,422 @@
+```html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dasteen Blog</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+
+    <!-- Header -->
+    <header class="bg-white shadow-md py-4">
+        <div class="container mx-auto flex items-center justify-between px-6">
+            <a href="#" class="text-2xl font-bold text-gray-800">
+                Dasteen<span class="text-blue-600">.Blog</span>
+            </a>
+            <nav class="space-x-6 text-gray-600">
+                <a href="#" class="hover:text-gray-800">Home</a>
+                <a href="#" class="hover:text-gray-800">Category</a>
+                <a href="#" class="hover:text-gray-800">About Me</a>
+                <a href="#" class="hover:text-gray-800"><i class="fas fa-search"></i> Search</a>
+                <a href="#" class="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500">Buy Me A Coffee</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="container mx-auto my-16 px-6 text-center">
+        <div class="flex flex-col md:flex-row md:items-center">
+            <div class="md:w-1/2">
+                <h1 class="text-4xl font-bold text-gray-800">Hi, I'm Dasteen <br> Front End Dev</h1>
+                <p class="text-gray-600 mt-4">
+                    On this blog I share tips and tricks, frameworks, projects, tutorials, etc. Make sure you subscribe to get the latest updates.
+                </p>
+                <div class="mt-6">
+                    <input class="border border-gray-300 rounded-md p-3 w-3/4 sm:w-1/2" type="text" placeholder="Enter your email here...">
+                    <button class="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-500">Subscribe</button>
+                </div>
+            </div>
+            <div class="md:w-1/2 mt-10 md:mt-0">
+                <img src="https://placehold.co/400x300" alt="Illustration of a developer working on a computer">
+            </div>
+        </div>
+        <div class="mt-12">
+            <i class="fas fa-chevron-down text-3xl text-gray-400"></i>
+        </div>
+    </section>
+
+    <!-- Categories Section -->
+    <section class="bg-gray-200 py-8">
+        <div class="container mx-auto px-6 text-center">
+            <h2 class="text-2xl font-semibold text-gray-800">Browse The Category</h2>
+            <div class="flex flex-wrap justify-center space-x-6 mt-6">
+                <div class="bg-white w-32 h-32 shadow-md hover:shadow-lg flex items-center justify-center font-semibold text-gray-600">CSS</div>
+                <div class="bg-white w-32 h-32 shadow-md hover:shadow-lg flex items-center justify-center font-semibold text-gray-600">Javascript</div>
+                <div class="bg-purple-600 text-white w-32 h-32 shadow-md hover:shadow-lg flex items-center justify-center font-semibold">Tailwind</div>
+                <div class="bg-white w-32 h-32 shadow-md hover:shadow-lg flex items-center justify-center font-semibold text-gray-600">Vue JS</div>
+                <div class="bg-white w-32 h-32 shadow-md hover:shadow-lg flex items-center justify-center font-semibold text-gray-600">React JS</div>
+            </div>
+            <a href="#" class="text-gray-600 mt-4 inline-block">See All Category</a>
+        </div>
+    </section>
+
+    <!-- Articles Section -->
+    <section class="container mx-auto my-16 px-6">
+        <!-- Featured Articles -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold text-gray-800">Featured Article</h2>
+                <a href="#" class="text-gray-600">See All Article <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image representing JavaScript fundamentals">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Fundamental Of Javascript</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 15, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image representing CSS knowledge">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Grid CSS Make Your Life Easier</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 12, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image illustrating dark mode toggle">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Make Animated Light Mode And Dark Mode Toggle With CSS</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image representing React JS game">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Make Tic Tac Toe Games With React JS</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>2 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- CSS Articles -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold text-gray-800">CSS</h2>
+                <a href="#" class="text-gray-600">See All Article <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image illustrating flexbox concepts">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Flexbox CSS: Everything You Need To Know</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 15, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image representing CSS grid">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Grid CSS Make Your Life Easier</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 12, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image describing div centering techniques">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">3 Easy Way to Make Div Center</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image illustrating animated light mode">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Make Animated Light Mode</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- JavaScript Articles -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold text-gray-800">Javascript</h2>
+                <a href="#" class="text-gray-600">See All Article <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image of JavaScript array example">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Array In Javascript - Learn JS #3</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image representing JavaScript fundamentals">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Fundamental Of Javascript</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image showcasing JavaScript projects">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">7 Project With Javascript You Must Try For Your Portfolio</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image of JavaScript calculator">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Make Simple Calculator With Javascript</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- React JS Articles -->
+        <div class="mb-8">
+            <div class="flex justify-between items-center mb-4">
+                <h2 class="text-2xl font-semibold text-gray-800">React JS</h2>
+                <a href="#" class="text-gray-600">See All Article <i class="fas fa-chevron-right"></i></a>
+            </div>
+            <div class="flex flex-wrap -mx-4">
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image representing React JS learning">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">First Month Of Learning React JS</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image illustrating markdown editor">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Build Markdown Editor With React JS</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image showing React JS app development">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Getting Started With React JS</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>3 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4 px-4 mb-8">
+                    <div class="bg-white shadow-md rounded-md overflow-hidden">
+                        <img class="w-full" src="https://placehold.co/400x200" alt="Image of a React JS game">
+                        <div class="p-4">
+                            <h3 class="font-semibold text-gray-800">Make Tic Tac Toe Games With React JS</h3>
+                            <div class="flex items-center mt-3 text-sm text-gray-600">
+                                <img class="w-8 h-8 rounded-full" src="https://placehold.co/40x40" alt="Author's profile picture">
+                                <span class="ml-2">Dasteen</span>
+                                <span class="mx-1">•</span>
+                                <span>Jan 10, 2022</span>
+                                <span class="mx-1">•</span>
+                                <span>2 Min Read</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="text-center my-8">
+            <button class="bg-purple-600 text-white px-6 py-3 rounded-md hover:bg-purple-500">More Article</button>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-gray-800 text-white py-12">
+        <div class="container mx-auto px-6">
+            <div class="flex flex-wrap gap-8">
+                <div class="w-full md:w-1/4">
+                    <h3 class="text-xl font-semibold mb-4">Dasteen<span class="text-blue-600">.blog</span></h3>
+                    <p class="text-gray-400">Digital scientist by Dastin Darmawan.</p>
+                    <div class="mt-4 flex space-x-3">
+                        <a href="#" class="bg-gray-700 p-2 rounded hover:bg-blue-600"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="bg-gray-700 p-2 rounded hover:bg-blue-600"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="bg-gray-700 p-2 rounded hover:bg-blue-600"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h4 class="text-lg font-semibold mb-4">Category</h4>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>CSS</li>
+                        <li>Javascript</li>
+                        <li>Tailwind</li>
+                        <li>React JS</li>
+                        <li>More Category</li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h4 class="text-lg font-semibold mb-4">About Me</h4>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>About Me</li>
+                        <li>Projects</li>
+                        <li>Achievement</li>
+                    </ul>
+                </div>
+                <div class="w-full md:w-1/4">
+                    <h4 class="text-lg font-semibold mb-4">Get in Touch</h4>
+                    <ul class="text-gray-400 space-y-2">
+                        <li>+62-XXX-XXX-XX</li>
+                        <li>datsin@gmail.com</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="text-center text-gray-500 mt-8">
+                <p>© 2022 Digidastin. Made With 💙 Jakarta, Indonesia</p>
+            </div>
+        </div>
+    </footer>
+
+</body>
+</html>
+```
