@@ -189,7 +189,7 @@ export const detectCmsAreaFromHTML = async (html: string): Promise<string> => {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
-      Authorization: `Bearer dummy',
+      Authorization: `Bearer ${process.env.OPEN_AI_API_KEY}`,
     },
     body: JSON.stringify({
       model: "gpt-4o",
